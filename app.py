@@ -66,19 +66,8 @@ with st.sidebar:
 if 'current_iter' in st.session_state and st.session_state['current_iter'] <= st.session_state['total_iter']:
     iterasi = st.session_state['current_iter']
     st.info(f"Percobaan {iterasi} dari {st.session_state['total_iter']}", icon="🧪")
-
-    # Tampilkan histori pilihan sebelumnya
-    if st.session_state['results']:
-        st.markdown("### 📋 Riwayat Pilihan Sebelumnya")
-        for item in st.session_state['results']:
-            st.markdown(f"""
-            <div style='background-color: #f9f9f9; padding: 8px 12px; border-left: 5px solid #4CAF50; margin-bottom: 10px; border-radius: 5px;'>
-                <b>Iterasi {item['iterasi']}:</b> {item['input_menu']}
-            </div>
-            """, unsafe_allow_html=True)
     st.subheader("Pilih Menu Favorit Anda")
     selected_menu = st.selectbox("", df_menu['nama'], key=f"menu_{iterasi}")
-    
 
     col1, col2 = st.columns([2, 1])
     with col1:
